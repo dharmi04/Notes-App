@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* src/styles/index.css */
+
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+@layer base {
+  :root {
+    --color-primary: 99 102 241; /* Indigo-500 */
+    --color-primary-light: 129 140 248; /* Indigo-400 */
+    --color-primary-dark: 79 70 229; /* Indigo-600 */
+  }
+  
+  html {
+    @apply antialiased scroll-smooth;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    @apply text-gray-800 bg-gray-50 transition-colors duration-300;
+  }
+  
+  .dark body {
+    @apply text-gray-100 bg-gray-900;
+  }
+  
+  /* Custom scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+  
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-gray-600;
+  }
+  
+  /* Mark styles for search highlighting */
+  mark {
+    @apply bg-yellow-200 dark:bg-yellow-700 px-1 rounded;
+  }
+}
+
+/* Custom animations */
+@layer utilities {
+  /* Hover animations for buttons and interactive elements */
+  .hover-lift {
+    @apply transition-transform duration-200 hover:-translate-y-0.5;
+  }
+  
+  /* Fade-in animation */
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Pulse animation for active elements */
+  .pulse-on-active {
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+    }
+  }
+}
+
+/* Additional component-specific styles */
+@layer components {
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-md hover:bg-white dark:hover:bg-gray-800;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg shadow-sm hover:shadow transition-all duration-300;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 px-4 py-2 rounded-lg shadow-sm hover:shadow transition-all duration-300;
+  }
+  
+  /* Form controls */
+  .form-input {
+    @apply w-full p-2 rounded-lg border border-gray-200 dark:border-gray-700 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors duration-300;
+  }
+}
